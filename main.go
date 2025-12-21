@@ -22,14 +22,15 @@ func main() {
 			zipCode: 94000,
 		},
 	}
-	jim.updateName("jimmy")
+	jimPointer := &jim
+	jimPointer.updateName("jimmy")
 	jim.print()
 
 }
 
 // doesn't work due to it's not a pointer receiver
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (p *person) updateName(newFirstName string) {
+	(*p).firstName = newFirstName
 }
 
 func (p person) print() {
